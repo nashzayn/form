@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Form Validation</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="fv.css" type="text/css" />
+	
+</head>
+<body>
+	<h1 style="text-align: center;" > Course registration form</h1>
+	<a class='btn github' href='https://github.com/yairEO/validator'>Github</a>
+	<div id='wrap'>
+		
+		<section class='form'>
+			<form action="" method="post" novalidate>
+				<fieldset>
+					<div class="field">
+						<label>
+							<span>studentname</span>
+							<input data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Enter your name" required="required" />
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>Name must be atleast 4 letters</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field">
+						<label>
+							<span>email</span>
+							<input name="email" class='email' required="required" type="email" />
+						</label>
+					</div>
+					
+					<div class="field">
+						<label>
+							<span>RollNumber</span>
+							<input type="number" class='number' name="number" data-validate-minmax="100000000" required='required'>
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>example:180701148</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>year</span>
+							<input type="number" class='number' name="number" data-validate-minmax="2020" required='required'>
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>Number must be between 2000 and 2020</p>
+							</div>
+						</div>
+					</div>
+				    <div class="field">
+						<label>
+							<span>Department</span>
+							<input name="name" placeholder="Enter your Dept" required="required" />
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>example:CSE</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>Country</span>
+							<input name="name" placeholder="Enter your Dept" required="required" />
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>example:CSE</p>
+							</div>
+						</div>
+					</div>
+                  					
+					
+				
+					
+					<div class="field">
+						<label>
+							<span>Telephone</span>
+							<input type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20">
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>Notice that for a phone number user can input a '+' sign, a dash '-' or a space ' '</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field">
+						<label>
+							<span>gender</span>
+							<select required name="dropdown">
+								<option value="">-- please select --</option>
+								<option value="o1">Male</option>
+								<option value="o2">Female</option>
+								<option value="o2">other</option>
+							
+							</select>
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>Choose something or choose not. what shall it be?</p>
+							</div>
+						</div>
+					</div>
+				
+					
+
+				
+
+					<div class="field multi required">
+						<label for='multi_first'>
+							<span>Pincode</span>
+						</label>
+						<div class='input'>
+							<input type="text" name="multi1" maxlength='9' id='multi_first'>
+							<input type="text" name="multi2" maxlength='9'>
+							<input type="text" name="multi3" maxlength='9'>
+							<input type="text" name="multi4" maxlength='9'>
+							<input type="text" name="multi5" maxlength='9'>
+							<input type="text" name="multi6" maxlength='9'>
+							<input data-validate-length-range="24" data-validate-pattern="alphanumeric" id="serial" name="serial" type="hidden" required='required' />
+						</div>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>This is a multifield, which let the user input a serial number or credit card number for example, and the trick is to validate the combined result, which is stored in a hidden field</p>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>
+							<span>City</span>
+							<input data-validate-length-range="6" data-validate-words="2" name="name" placeholder="city" required="required" />
+						</label>
+						<div class='tooltip help'>
+							<span>?</span>
+							<div class='content'>
+								<b></b>
+								<p>chennai</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field">
+						<label>
+							<span>Address</span>
+							<textarea required="required" name='message'></textarea>
+						</label>
+					</div>
+					
+					
+				</fieldset>
+				<fieldset>
+					
+					<input name="somethingHidden" required="required" type="text" style='display:none' />
+				</fieldset>
+				<button type='submit'>Submit</button>
+                <button type='reset'>Reset</button>
+			</form>
+		</section>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="multifield.js"></script>
+    <script src="validator.js"></script>
+	<script>
+		// initialize a validator instance from the "FormValidator" constructor.
+        // A "<form>" element is optionally passed as an argument, but is not a must
+		var validator = new FormValidator({"events" : ['blur', 'input', 'change']}, document.forms[0]);
+
+
+        // on form "submit" event
+		document.forms[0].onsubmit = function(e){
+			var submit = true,
+				validatorResult = validator.checkAll(this);
+
+			console.log(validatorResult);
+			return !!validatorResult.valid;
+		};
+
+
+        // on form "reset" event
+        document.forms[0].onreset = function(e){
+            validator.reset();
+        };
+
+        // stuff related ONLY for this demo page:
+		$('.toggleValidationTooltips').change(function(){
+			validator.settings.alerts = !this.checked;
+
+			if( this.checked )
+				$('form .alert').remove();
+		}).prop('checked',false);
+	</script>
+</body>
+</html>
